@@ -8,6 +8,7 @@
 
 import DependencyInjection
 import UIKit
+import SwiftUI
 
 final class CharactersCoordinator {
     let container: Container
@@ -24,6 +25,10 @@ final class CharactersCoordinator {
 // MARK: NavigationControllerCoordinator
 extension CharactersCoordinator: NavigationControllerCoordinator {
     func start() {
-        navigationController.setViewControllers([UIViewController()], animated: false)
+        navigationController.setViewControllers([createCharacterListView()], animated: false)
+    }
+    
+    func createCharacterListView() -> UIViewController {
+        UIHostingController<CharactersListView>(rootView: CharactersListView())
     }
 }
